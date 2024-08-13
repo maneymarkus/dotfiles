@@ -1,0 +1,5 @@
+# For the local dotfiles git repository
+.DS_Store
+.ssh/*
+.gnupg/*
+.idea

@@ -1,0 +1,36 @@
+[user]
+    name = Markus Städler
+    email = markus.staedler@hotmail.de
+    username = maneymarkus
+[github]
+    user = maneymarkus
+[init]
+    defaultBranch = main
+[core]
+    editor = code --wait --new-window
+    excludesfile = ~/.gitignore_global
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[alias]
+    aa = add --all
+    b = branch
+    ba = branch -a
+    hist = log
+    c = commit
+    ca = commit -a
+    cm = commit -m
+    cam = commit -am
+    df = diff
+    st = status
+    s = switch
+[color "status"]
+    header = "black normal bold"
+    added = "green normal bold"
+    updated = "green normal bold"
+    changed = "yellow normal bold"
+    untracked = "cyan normal bold"
+    branch = "magenta normal bold"
+    nobranch = "normal normal bold"
+    unmerged = "red normal bold"
