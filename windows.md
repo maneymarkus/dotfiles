@@ -4,7 +4,8 @@ I guess there are also ways to automatedly setup a windows machine. For now I wi
 
 ## Programs
 
-### IDEs:
+### IDEs
+
 - VSCode
 - PyCharm (via Toolbox)
 - PHPStorm (via Toolbox)
@@ -16,10 +17,12 @@ I guess there are also ways to automatedly setup a windows machine. For now I wi
 - Toolbox
 
 ### Package managers for Windows
+
 - chocolatey
 - VCPKG
 
 ### Dev
+
 - WSL
 - Putty
 - Git
@@ -32,26 +35,30 @@ I guess there are also ways to automatedly setup a windows machine. For now I wi
 - PostgreSQL
 - pgAdmin
 - Postman
-- 
 
 #### PHP
+
 - PHP
 - composer
 - XAMPP
 
 #### Python
+
 - Python
 - pipenv
 
 #### Java
+
 - Java
 
 #### JavaScript
+
 - Node.js
 - npm
 - nvm
 
 ### Hardware
+
 - Logi Options+
 - Logitech GHub
 - HWiNFO
@@ -59,6 +66,7 @@ I guess there are also ways to automatedly setup a windows machine. For now I wi
 - CPU-Z
 
 ### Miscalleanous
+
 - Bitwarden
 - SurfShark
 - Slack

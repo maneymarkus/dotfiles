@@ -19,4 +19,5 @@ brew "zsh"
 
 # Apps
 cask "docker"
+cask "scroll-reverser"
 cask "visual-studio-code"

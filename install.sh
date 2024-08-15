@@ -10,12 +10,7 @@ else
     exit 1
 fi
 
-# If zsh is not available on system -> install
-if ! grep -q /zsh "/etc/shells"; then
-	echo "zsh is not available; Installing..."
-    # Install zsh
-    echo "zsh installed."
-fi
+echo "OS setup complete."
 
 # check if zsh is default shell, if not do so
 if [ $(basename $SHELL) != "zsh" ]; then
@@ -24,6 +19,8 @@ if [ $(basename $SHELL) != "zsh" ]; then
     echo "Changed default shell for current user to zsh."
 fi
 
+echo "zsh is default shell."
+
 # check if oh-my-zsh is available
 if ! [ -x "$(command -v omz)" ]; then
     echo "oh-my-zsh is not available. Installing..."
@@ -31,11 +28,17 @@ if ! [ -x "$(command -v omz)" ]; then
     echo "Installed oh-my-zsh."
 fi
 
+echo "oh-my-zsh is available."
+
 # update oh-my-zsh
 omz update
 
+echo "oh-my-zsh is up-to-date."
+
 # install dotfiles repo
 git clone https://github.com/maneymarkus/dotfiles.git ~/dotfiles
+
+echo "Cloned dotfiles repo."
 
 # removes .zshrc from $HOME and symlinks the .zshrc file from dotfiles
 rm -rf $HOME/.zshrc
