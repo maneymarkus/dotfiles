@@ -1,6 +1,20 @@
 #!/bin/sh
 # Run script via sudo
 
+ask () {
+    read -p "$1 (Y/n):" resp
+
+    # empty response is no
+    if [ -z "$resp" ]; then
+        resp="n"
+    fi
+
+    # case insensitive
+    resp=$(echo "$resp" | tr '[:upper:]' '[:lower:]')
+
+    test "$resp"
+}
+
 if [ "$(uname -s)" = "Linux" ]; then
     ./setup_linux.sh
 elif [ "$(uname -s)" = "Darwin" ]; then
@@ -40,10 +54,6 @@ git clone https://github.com/maneymarkus/dotfiles.git $HOME/dotfiles
 
 echo "Cloned dotfiles repo."
 
-# removes .zshrc from $HOME and symlinks the .zshrc file from dotfiles
-rm -rf $HOME/.zshrc
-ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
-
 # install latest version of terraform
 tfswitch
 
@@ -53,8 +63,31 @@ if test ! $(which terragrunt); then
     echo "Installed terragrunt autocomplete."
 fi
 
-# install dotfiles
+# removes .zshrc from $HOME and symlinks the .zshrc file from dotfiles
+rm -rf $HOME/.zshrc
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
 
-# install programs
+# removes .zprofile from $HOME and symlinks the .zprofile file from dotfiles
+rm -rf $HOME/.zprofile
+ln -s $HOME/dotfiles/.zprofile $HOME/.zprofile
 
+# source shell files
+# install dotfiles via symbolic link
+for file in $HOME/dotfiles/dotfiles/; do
+    if ask "Do you want to source $file? (Y/n): "; then
+        ln -s "$(realpath $file)" ~/$file;
+    fi
+done;
+unset file;
+
+# install dotfiles via symbolic link
+for file in $HOME/dotfiles/dotfiles/; do
+    if ask "Do you want to install $file? (Y/n): "; then
+        ln -s "$(realpath $file)" ~/$file;
+    fi
+done;
+unset file;
+
+# restart shell
+source $HOME/.zshrc
 source $HOME/.zprofile

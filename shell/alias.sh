@@ -1,3 +1,4 @@
+#!/bin/sh
 alias l="ls -la"
 alias please="sudo"
 

@@ -21,3 +21,5 @@ brew upgrade git
 # install programs from Brewfile
 brew tap homebrew/bundle
 brew bundle --file ./Brewfile
+
+source ./.macos
