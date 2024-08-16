@@ -15,6 +15,8 @@ brew "mackup"
 brew "nvm" # to install npm and node later on
 brew "python"
 brew "tmux"
+brew "terragrunt"
+brew "warrensbox/tap/tfswitch"
 brew "zsh"
 
 # Apps

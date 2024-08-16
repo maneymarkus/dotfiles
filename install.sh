@@ -36,13 +36,22 @@ omz update
 echo "oh-my-zsh is up-to-date."
 
 # install dotfiles repo
-git clone https://github.com/maneymarkus/dotfiles.git ~/dotfiles
+git clone https://github.com/maneymarkus/dotfiles.git $HOME/dotfiles
 
 echo "Cloned dotfiles repo."
 
 # removes .zshrc from $HOME and symlinks the .zshrc file from dotfiles
 rm -rf $HOME/.zshrc
 ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+
+# install latest version of terraform
+tfswitch
+
+# install terragrunt autocomplete (will be added to ~/.zshrc but it's fine) if terragrunt is available
+if test ! $(which terragrunt); then
+    terragrunt --install-autocomplete
+    echo "Installed terragrunt autocomplete."
+fi
 
 # install dotfiles
 

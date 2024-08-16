@@ -35,6 +35,8 @@ I guess there are also ways to automatedly setup a windows machine. For now I wi
 - [PostgreSQL](https://www.postgresql.org/download/)
 - [pgAdmin](https://www.pgadmin.org/download/)
 - [Postman](https://www.postman.com/downloads/)
+- [Terraform]()
+- [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
 
 #### PHP
 
@@ -86,3 +88,4 @@ I guess there are also ways to automatedly setup a windows machine. For now I wi
 - [Zoom](https://zoom.us/download?os=win)
 - [Clicker Desktop](https://github.com/victorkifer/clicker)
 - [Spacedesk](https://www.spacedesk.net/de/)
+- [Spotify](https://www.spotify.com/de/download/windows/)
