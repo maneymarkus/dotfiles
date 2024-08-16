@@ -2,7 +2,7 @@
 # Run script via sudo
 
 ask () {
-    read -p "$1 (Y/n):" resp
+    read -p "$1 (Y/n): " resp
 
     # empty response is no
     if [ -z "$resp" ]; then
@@ -72,22 +72,22 @@ rm -rf $HOME/.zprofile
 ln -s $HOME/dotfiles/.zprofile $HOME/.zprofile
 
 # source shell files
-# install dotfiles via symbolic link
-for file in $HOME/dotfiles/dotfiles/; do
-    if ask "Do you want to source $file? (Y/n): "; then
-        ln -s "$(realpath $file)" ~/$file;
+# add source command to ~/.zprofile
+for file in $HOME/dotfiles/dotfiles/.[^.]*; do
+    if ask "Do you want to source $(basename "$file")?"; then
+        echo "source $(realpath "$file")" >> $HOME/.zprofile
     fi
 done;
 unset file;
 
 # install dotfiles via symbolic link
-for file in $HOME/dotfiles/dotfiles/; do
-    if ask "Do you want to install $file? (Y/n): "; then
-        ln -s "$(realpath $file)" ~/$file;
+for file in $HOME/dotfiles/dotfiles/*; do
+    if ask "Do you want to install $(basename "$file")?"; then
+        ln -s "$(realpath $file)" $HOME/$file;
     fi
 done;
 unset file;
 
 # restart shell
 source $HOME/.zshrc
-source $HOME/.zprofile
+# .zprofile doesn't have to be sourced here again as .zshrc already contains this line

@@ -6,6 +6,11 @@ The shell scripts are written in POSIX compatible code to guarantee their execut
 > **Note** (maybe even a warning): These are ***my*** preferences. Handle with care and use at your own risk. No warranty.\
 *Batteries included*.
 
+## Structure
+
+- `dotfiles/`: contains actual configuration dotfiles like .gitconfig. Files in this repository will be installed by creating a symlink in the ~ directory linking to the respective file in this directory
+- `shell/`: contains shell files that are installed by sourcing them 
+
 ## Install
 
 1. Download `install.sh` from this dotfiles repo:
