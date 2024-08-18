@@ -1,7 +1,8 @@
 # dotfiles
 
 This is my dotfiles repository, to setup my unix based systems on an automated basis. This repository supports both, MacOS and Linux distributions and checks automatically which OS it is running on.
-The shell scripts are written in POSIX compatible code to guarantee their execution on almost every system. Also, they are just for setting up the system and installing my desired shell - which is zsh.
+The shell scripts are written in POSIX compatible code to guarantee their execution on almost every system. Also, they are just for setting up the system and installing my desired shell - which is zsh.\
+Update: the `setup_linux.sh` script is now only bash compatible. Should be good enough.
 
 > **Note** (maybe even a warning): These are ***my*** preferences. Handle with care and use at your own risk. No warranty.\
 *Batteries included*.
