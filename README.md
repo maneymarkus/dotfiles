@@ -13,11 +13,50 @@ The shell scripts are written in POSIX compatible code to guarantee their execut
 
 ## Install
 
-1. Download `install.sh` from this dotfiles repo:
+### Without Git
+
+1. Theoretically, you could download the contents of the GitHub repository without using Git but curl:
 ```
-curl -LO https://raw.githubusercontent.com/maneymarkus/dotfiles/main/install.sh
+mkdir $HOME/dotfiles
+curl -#L https://github.com/maneymarkus/dotfiles/tarball/main | tar -xzv -C $HOME/dotfiles --strip-components=1
 ```
-2. Make file executable:
+2. `cd` into the dotfiles directory and make `install.sh` executable:
+```
+cd $HOME/dotfiles
+chmod u+x install.sh
+```
+3. Run it as root:
+```
+sudo ./install.sh
+```
+4. Type in your password
+5. Decide what you want to install
+6. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys)
+
+#### Optional: "reconnecting" to GitHub repository so that you can update the dotfiles also on this machine
+
+7. Remove the local `dotfiles` repository
+```
+rm -rf $HOME/dotfiles
+```
+8. Clone the GitHub repository
+```
+git clone https://github.com/maneymarkus/dotfiles.git $HOME/dotfiles
+# or do it via an SSH key:
+git clone git@github.com:maneymarkus/dotfiles.git $HOME/dotfiles
+```
+9. You're all set. Now you can commit changes to the repository.
+
+> Note: The `install.sh` script creates symlinks to the configuration files in the dotfiles repository rather than copying them into the `$HOME` directory. When you remove the directory the symlinks will be broken, but will work again after cloning the repository into the same directory again. Same with adding `source` commands to the `.zprofile` file. 
+
+### With Git
+
+1. Install Git ([MacOS](https://git-scm.com/download/mac) or [Linux](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
+2. Clone the repository via:
+```
+git clone https://github.com/maneymarkus/dotfiles.git $HOME/dotfiles
+```
+2. Inside the git repo make the install.sh file executable:
 ```
 chmod u+x install.sh
 ```
@@ -27,7 +66,7 @@ sudo ./install.sh
 ```
 4. Type in your password
 5. Decide what you want to install
-6. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys) 
+6. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys)
 
 ## Sources
 
@@ -39,3 +78,7 @@ sudo ./install.sh
 ### .gitignore
 
 - [.gitignore templates](https://github.com/github/gitignore)
+
+## Future developments
+
+For the future this could possibly be enhanced by using Ansible and/or a dotfiles manager like [chezmoi](https://www.chezmoi.io/)
