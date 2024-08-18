@@ -51,9 +51,6 @@ omz update
 
 echo "oh-my-zsh is up-to-date."
 
-# install latest version of terraform
-tfswitch
-
 # install terragrunt autocomplete (will be added to ~/.zshrc but it's fine) if terragrunt is available
 if test ! $(which terragrunt); then
     terragrunt --install-autocomplete

@@ -70,9 +70,12 @@ export NVM_DIR="$HOME/.nvm"
 nvm install node # install latest version of node
 
 # install tfswitch as terraform version manager
-curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | bash
+curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | sudo bash
 
-echo "please install terragrunt manually via this link: https://terragrunt.gruntwork.io/docs/getting-started/install/"
+# install latest version of terraform
+tfswitch
+
+echo "Please install terragrunt manually via this link: https://terragrunt.gruntwork.io/docs/getting-started/install/"
 # Just ask for input to pause script execution
 read -p "Did you install terragrunt? (Y/n):" resp
 
