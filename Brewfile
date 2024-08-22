@@ -21,5 +21,6 @@ brew "zsh"
 
 # Apps
 cask "docker"
+cask "iterm2"
 cask "scroll-reverser"
 cask "visual-studio-code"
