@@ -75,6 +75,11 @@ sudo ./install.sh
 
 - [YouTube: Solving the dotfiles problem](https://www.youtube.com/watch?v=mSXOYhfDFYo)
 - [GitHub: Awsome dotfiles](https://github.com/webpro/awesome-dotfiles)
+- [GitHub: bartekspitza dotfiles](https://github.com/bartekspitza/dotfiles)
+- [GitHub: driesvints dotfiles](https://github.com/driesvints/dotfiles)
+- [GitHub: webpro dotfiles](https://github.com/webpro/dotfiles)
+- [GitHub: holman dotfiles](https://github.com/holman/dotfiles)
+- [GitHub: mathiasbynens dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 ### .gitignore
 
