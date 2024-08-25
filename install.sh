@@ -1,5 +1,4 @@
 #!/bin/sh
-# Run script via sudo
 
 ask () {
     read -p "$1 (Y/n): " resp

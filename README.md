@@ -26,27 +26,26 @@ curl -#L https://github.com/maneymarkus/dotfiles/tarball/main | tar -xzv -C $HOM
 cd $HOME/dotfiles
 chmod u+x install.sh
 ```
-3. Run it as root:
+3. Run it:
 ```
-sudo ./install.sh
+./install.sh
 ```
-4. Type in your password
-5. Decide what you want to install
-6. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys)
+4. Decide what you want to install
+5. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys)
 
 #### Optional: "reconnecting" to GitHub repository so that you can update the dotfiles also on this machine
 
-7. Remove the local `dotfiles` repository
+6. Remove the local `dotfiles` repository
 ```
 rm -rf $HOME/dotfiles
 ```
-8. Clone the GitHub repository
+7. Clone the GitHub repository
 ```
 git clone https://github.com/maneymarkus/dotfiles.git $HOME/dotfiles
 # or do it via an SSH key:
 git clone git@github.com:maneymarkus/dotfiles.git $HOME/dotfiles
 ```
-9. You're all set. Now you can commit changes to the repository.
+8. You're all set. Now you can commit changes to the repository.
 
 > Note: The `install.sh` script creates symlinks to the configuration files in the dotfiles repository rather than copying them into the `$HOME` directory. When you remove the directory the symlinks will be broken, but will work again after cloning the repository into the same directory again. Same with adding `source` commands to the `.zprofile` file. 
 
@@ -57,17 +56,17 @@ git clone git@github.com:maneymarkus/dotfiles.git $HOME/dotfiles
 ```
 git clone https://github.com/maneymarkus/dotfiles.git $HOME/dotfiles
 ```
-2. Inside the git repo make the install.sh file executable:
+3. Inside the git repo make the install.sh file executable:
 ```
 chmod u+x install.sh
 ```
-3. Run it as root:
+4. Run it:
 ```
-sudo ./install.sh
+./install.sh
 ```
-4. Type in your password
-5. Decide what you want to install
-6. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys)
+5. Type in your password
+6. Decide what you want to install
+7. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys)
 
 ## Sources
 
