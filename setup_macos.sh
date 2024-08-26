@@ -11,6 +11,9 @@ fi
 if ! [ -x "$(command -v brew)" ]; then
     echo "Brew is not installed. Installing..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # Adds brew to the $PATH on macOS machines
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/dotfiles/.zprofile
+    # This line doesn't actually work and won't make brew available in the current shell but you can run it manually. It doesn't matter as the script will restart the shell anyway.
     eval "$(/opt/homebrew/bin/brew shellenv)"
     echo "Installed Brew."
 fi
