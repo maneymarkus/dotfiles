@@ -11,7 +11,7 @@ ask () {
     # case insensitive
     resp=$(echo "$resp" | tr '[:upper:]' '[:lower:]')
 
-    test "$resp"
+    test "$resp" = "y"
 }
 
 if [ "$(uname -s)" = "Linux" ]; then
