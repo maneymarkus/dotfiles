@@ -66,7 +66,7 @@ ln -s $HOME/dotfiles/.zprofile $HOME/.zprofile
 
 # source shell files
 # add source command to ~/.zprofile
-for file in $HOME/dotfiles/shell/.[^.]*; do
+for file in $HOME/dotfiles/shell/*; do
     if ask "Do you want to source $(basename "$file")?"; then
         echo "source $(realpath "$file")" >> $HOME/.zprofile
     fi
