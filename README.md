@@ -19,12 +19,13 @@ Update: the `setup_linux.sh` script is now only bash compatible. Should be good 
 1. Theoretically, you could download the contents of the GitHub repository without using Git but curl:
 ```
 mkdir $HOME/dotfiles
+```
+```
 curl -#L https://github.com/maneymarkus/dotfiles/tarball/main | tar -xzv -C $HOME/dotfiles --strip-components=1
 ```
 2. `cd` into the dotfiles directory and make `install.sh` executable:
 ```
-cd $HOME/dotfiles
-chmod u+x install.sh
+cd $HOME/dotfiles && chmod u+x install.sh
 ```
 3. Run it:
 ```
@@ -58,7 +59,7 @@ git clone https://github.com/maneymarkus/dotfiles.git $HOME/dotfiles
 ```
 3. Inside the git repo make the install.sh file executable:
 ```
-chmod u+x install.sh
+cd $HOME/dotfiles && chmod u+x install.sh
 ```
 4. Run it:
 ```
