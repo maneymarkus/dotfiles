@@ -31,6 +31,9 @@ echo "Upgraded git."
 brew tap homebrew/bundle
 brew bundle --file ./Brewfile
 
+# install terraform and mitigate permission issues
+sudo tfswitch
+
 echo "Installed programs from Brewfile."
 
 echo "Restoring defaults..."

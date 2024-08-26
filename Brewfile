@@ -2,6 +2,8 @@ cask_args appdir: "/Applications"
 
 # Taps
 tap "homebrew/bundle"
+tap "derailed/k9s"
+tap "warrensbox/tap"
 
 # Binaries
 brew "awscli"
