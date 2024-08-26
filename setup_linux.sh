@@ -3,7 +3,7 @@
 pkg_manager="null"
 
 declare -A osInfo;
-osInfo[/etc/debian_version]=apt
+osInfo[/etc/debian_version]=apt-get
 osInfo[/etc/alpine-release]=apk
 osInfo[/etc/redhat-release]=yum
 osInfo[/etc/arch-release]=pacman
@@ -25,21 +25,18 @@ if [ "$pkg_manager" = "null" ]; then
 fi
 
 # install git
-sudo "$pkg_manager" install git-all
+sudo "$pkg_manager" -y install git-all
 
 # install packages
-sudo "$pkg_manager" install python3
-sudo "$pkg_manager" install tmux
-sudo "$pkg_manager" install gnupg
-sudo "$pkg_manager" install awscli
-sudo "$pkg_manager" install coreutils
-sudo "$pkg_manager" install docker
-sudo "$pkg_manager" install zsh
-sudo "$pkg_manager" install git-lfs
-sudo "$pkg_manager" install jq
+sudo "$pkg_manager" install -y python3 tmux gnupg awscli coreutils docker zsh git-lfs jq
+
+# install awscli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$HOME/awscliv2.zip"
+unzip $HOME/awscliv2.zip
+sudo $HOME/aws/install
 
 if [ "$pkg_manager" != "pacman" ]; then
-    sudo "$pkg_manager" install pacman
+    sudo "$pkg_manager" -y install pacman
 fi
 sudo pacman -S k9s
 
@@ -58,7 +55,7 @@ if [ "$pkg_manager" = "apt" ]; then
 fi
 
 # install composer
-sudo "$pkg_manager" install php php-curl
+sudo "$pkg_manager" -y install php php-curl
 curl -sS https://getcomposer.org/installer -o composer-setup.php
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
@@ -73,7 +70,7 @@ nvm install node # install latest version of node
 curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | sudo bash
 
 # install latest version of terraform
-tfswitch
+sudo tfswitch
 
 echo "Please install terragrunt manually via this link: https://terragrunt.gruntwork.io/docs/getting-started/install/"
 # Just ask for input to pause script execution
