@@ -15,11 +15,13 @@ ask () {
 }
 
 if [ "$(uname -s)" = "Linux" ]; then
-    chmod u+x ./setup_linux.sh
-    ./setup_linux.sh
+    sh setup_linux.sh
 elif [ "$(uname -s)" = "Darwin" ]; then
-    chmod u+x ./setup_macos.sh
-    ./setup_macos.sh
+    sh setup_macos.sh
+    if [ $? -ne 0 ]; then
+        echo "MacOS Setup failed. Abort."
+        exit 1
+    fi
 else
     echo "Unsupported OS. Abort"
     exit 1
