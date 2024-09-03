@@ -17,6 +17,11 @@ if [ "$(xcode-select -p 1>/dev/null;echo $?)" -ne 0 ]; then
         exit 1
     fi
 
+    if [ "$(xcode-select -p 1>/dev/null;echo $?)" -ne 0 ]; then
+        echo "Xcode command line tools are not installed. Abort."
+        exit 1
+    fi
+
     echo "Installed Xcode command line tools."
 fi
 
