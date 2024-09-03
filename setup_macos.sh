@@ -4,6 +4,19 @@
 if [ "$(xcode-select -p 1>/dev/null;echo $?)" -ne 0 ]; then
     echo "Xcode command line tools are not installed. Installing..."
     xcode-select --install
+
+    read -p "Did you install Xcode command line tools? (Y/n):" resp
+    # empty response is no
+    if [ -z "$resp" ]; then
+        resp="n"
+    fi
+    # case insensitive
+    resp=$(echo "$resp" | tr '[:upper:]' '[:lower:]')
+    if test "$resp" = "n"; then
+        echo "Please install Xcode command line tools before proceeding."
+        exit 1
+    fi
+
     echo "Installed Xcode command line tools."
 fi
 
