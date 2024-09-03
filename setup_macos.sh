@@ -35,7 +35,3 @@ brew bundle --file ./Brewfile
 sudo tfswitch
 
 echo "Installed programs from Brewfile."
-
-echo "Restoring defaults..."
-
-source ./.macos

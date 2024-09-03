@@ -84,3 +84,10 @@ unset file;
 # restart shell
 source $HOME/.zshrc
 # .zprofile doesn't have to be sourced here again as .zshrc already contains this line
+
+# if on MacOS restore defaults
+if [ "$(uname -s)" = "Darwin" ]; then
+    echo "Restoring defaults..."
+
+    source ./.macos
+fi
