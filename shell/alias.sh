@@ -15,3 +15,4 @@ alias gp="git push"
 # Python
 #####################################
 alias python="python3"
+alias py="python"
