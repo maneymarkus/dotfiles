@@ -77,7 +77,7 @@ unset file;
 
 # install dotfiles via symbolic link
 for file in $HOME/dotfiles/dotfiles/.*; do
-    if test -e "$file" && ask "Do you want to install $(basename "$file")?"; then
+    if test -f "$file" && ask "Do you want to install $(basename "$file")?"; then
         ln -s "$(realpath $file)" $HOME/$file;
     fi
 done;
