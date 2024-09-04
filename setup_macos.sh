@@ -38,11 +38,6 @@ brew update
 
 echo "brew is up-to-date."
 
-# upgrade git
-brew install git
-
-echo "Installed git."
-
 # install programs from Brewfile
 brew tap homebrew/bundle
 brew bundle --file ./Brewfile
