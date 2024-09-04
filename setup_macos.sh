@@ -42,7 +42,9 @@ echo "brew is up-to-date."
 brew tap homebrew/bundle
 brew bundle --file ./Brewfile
 
-# install terraform and mitigate permission issues
-sudo tfswitch
+# install terraform (if no local installation exists) and mitigate permission issues
+if ! [ -x "$(command -v brew)" ]; then
+    sudo tfswitch
+fi
 
 echo "Installed programs from Brewfile."
