@@ -3,3 +3,4 @@
 .ssh/*
 .gnupg/*
 .idea
+Brewfile.lock.json
