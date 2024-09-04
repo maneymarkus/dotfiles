@@ -69,8 +69,10 @@ nvm install node # install latest version of node
 # install tfswitch as terraform version manager
 curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | sudo bash
 
-# install latest version of terraform
-sudo tfswitch
+# install latest version of terraform (if no local installation exists) and mitigate permission issues (with sudo)
+if ! [ -x "$(command -v brew)" ]; then
+    sudo tfswitch
+fi
 
 echo "Please install terragrunt manually via this link: https://terragrunt.gruntwork.io/docs/getting-started/install/"
 # Just ask for input to pause script execution
