@@ -28,7 +28,7 @@ fi
 sudo "$pkg_manager" -y install git-all
 
 # install packages
-sudo "$pkg_manager" install -y python3 tmux gnupg awscli coreutils docker zsh git-lfs jq
+sudo "$pkg_manager" install -y python3 tmux gnupg coreutils zsh git-lfs jq
 
 # install awscli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$HOME/awscliv2.zip"
@@ -53,6 +53,26 @@ if [ "$pkg_manager" = "apt" ]; then
     sudo apt update
     sudo apt install code
 fi
+
+# install docker
+if [ "$pkg_manager" = "apt" ]; then
+    # Add Docker's official GPG key:
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    # Add the repository to Apt sources:
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+fi
+
 
 # install composer
 sudo "$pkg_manager" -y install php php-curl
