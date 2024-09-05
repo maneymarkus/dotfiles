@@ -32,7 +32,7 @@ sudo "$pkg_manager" install -y python3 tmux gnupg coreutils zsh git-lfs jq
 
 # install awscli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$HOME/awscliv2.zip"
-unzip $HOME/awscliv2.zip
+unzip $HOME/awscliv2.zip -d $HOME
 sudo $HOME/aws/install
 
 if [ "$pkg_manager" != "pacman" ]; then
