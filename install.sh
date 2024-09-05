@@ -34,6 +34,7 @@ if [ $(basename $SHELL) != "zsh" ]; then
     echo "zsh is not default shell. Changing..."
     chsh -s $(which zsh)
     echo "Changed default shell for current user to zsh."
+    zsh
 fi
 
 echo "zsh is default shell."
