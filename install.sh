@@ -94,3 +94,8 @@ if [ "$(uname -s)" = "Darwin" ]; then
 
     source ./.macos
 fi
+
+# if on Linux, give some hints
+if [ "$(uname -s)" = "Linux" ]; then
+    echo "Now to enable some of the changes (like changing the default user shell to zsh) please log out and in again"
+fi
