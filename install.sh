@@ -15,7 +15,7 @@ ask () {
 }
 
 if [ "$(uname -s)" = "Linux" ]; then
-    sh setup_linux.sh
+    bash setup_linux.sh
 elif [ "$(uname -s)" = "Darwin" ]; then
     sh setup_macos.sh
     if [ $? -ne 0 ]; then
