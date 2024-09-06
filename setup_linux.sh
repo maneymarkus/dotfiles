@@ -28,7 +28,7 @@ fi
 sudo "$pkg_manager" -y install git-all
 
 # install packages
-sudo "$pkg_manager" install -y python3 tmux gnupg coreutils zsh git-lfs jq
+sudo "$pkg_manager" install -y python3 tmux gnupg coreutils zsh git-lfs jq curl # install curl as a precaution (because might not be installed e.g. on Ubuntu and wget was used to download dotfiles)
 
 # install awscli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$HOME/awscliv2.zip"
