@@ -47,11 +47,6 @@ fi
 
 echo "oh-my-zsh is available."
 
-# update oh-my-zsh
-omz update
-
-echo "oh-my-zsh is up-to-date."
-
 # install terragrunt autocomplete (will be added to ~/.zshrc but it's fine) if terragrunt is available
 if ! [ -x "$(command -v terragrunt)" ]; then
     terragrunt --install-autocomplete
