@@ -90,7 +90,8 @@ curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/i
 
 # install latest version of terraform (if no local installation exists) and mitigate permission issues (with sudo)
 if ! [ -x "$(command -v terraform)" ]; then
-    sudo tfswitch
+    mkdir -p $HOME/bin
+    tfswitch -b $HOME/bin/terraform
 fi
 
 echo "Please install terragrunt manually via this link: https://terragrunt.gruntwork.io/docs/getting-started/install/"

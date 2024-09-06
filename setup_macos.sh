@@ -44,7 +44,8 @@ brew bundle --file ./Brewfile
 
 # install terraform (if no local installation exists) and mitigate permission issues
 if ! [ -x "$(command -v terraform)" ]; then
-    sudo tfswitch
+    mkdir -p $HOME/bin
+    tfswitch -b $HOME/bin/terraform
 fi
 
 echo "Installed programs from Brewfile."
