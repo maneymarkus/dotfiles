@@ -43,7 +43,7 @@ brew tap homebrew/bundle
 brew bundle --file ./Brewfile
 
 # install terraform (if no local installation exists) and mitigate permission issues
-if ! [ -x "$(command -v brew)" ]; then
+if ! [ -x "$(command -v terraform)" ]; then
     sudo tfswitch
 fi
 

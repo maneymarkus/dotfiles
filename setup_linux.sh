@@ -42,7 +42,7 @@ sudo pacman -S k9s
 
 # install vscode; only works with apt - for other distros see link:
 # https://code.visualstudio.com/docs/setup/linux
-if [ "$pkg_manager" = "apt" ]; then
+if [ "$pkg_manager" = "apt-get" ]; then
     sudo "" install wget gpg
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
     sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
@@ -55,7 +55,7 @@ if [ "$pkg_manager" = "apt" ]; then
 fi
 
 # install docker
-if [ "$pkg_manager" = "apt" ]; then
+if [ "$pkg_manager" = "apt-get" ]; then
     # Add Docker's official GPG key:
     sudo apt-get update
     sudo apt-get install ca-certificates curl
@@ -90,7 +90,7 @@ nvm install node # install latest version of node
 curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/master/install.sh | sudo bash
 
 # install latest version of terraform (if no local installation exists) and mitigate permission issues (with sudo)
-if ! [ -x "$(command -v brew)" ]; then
+if ! [ -x "$(command -v terraform)" ]; then
     sudo tfswitch
 fi
 
