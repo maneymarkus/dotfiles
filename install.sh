@@ -79,7 +79,11 @@ done;
 unset file;
 
 # restart shell
-source $HOME/.zshrc
+pushd $HOME
+# execution permission isn't necessary within this script but if user wants to source these files manually, this permission change will make it work
+chmod u+x .zprofile
+chmod u+x .zshrc
+./.zshrc
 # .zprofile doesn't have to be sourced here again as .zshrc already contains this line
 
 # if on MacOS restore defaults
