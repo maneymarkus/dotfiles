@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ask () {
     read -p "$1 (Y/n): " resp
@@ -85,6 +85,8 @@ chmod u+x .zprofile
 chmod u+x .zshrc
 ./.zshrc
 # .zprofile doesn't have to be sourced here again as .zshrc already contains this line
+
+popd
 
 # if on MacOS restore defaults
 if [ "$(uname -s)" = "Darwin" ]; then
