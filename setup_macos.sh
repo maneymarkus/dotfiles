@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # install xcode command line tools
 if [ "$(xcode-select -p 1>/dev/null;echo $?)" -ne 0 ]; then

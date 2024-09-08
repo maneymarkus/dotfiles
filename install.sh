@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ask () {
     read -p "$1 (Y/n): " resp
