@@ -1,1 +1,1 @@
-./.zprofile
+source .zprofile
