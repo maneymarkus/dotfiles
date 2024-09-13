@@ -82,8 +82,6 @@ unset file;
 source .zshrc
 # .zprofile doesn't have to be sourced here again as .zshrc already contains this line
 
-popd
-
 # if on MacOS restore defaults
 if [ "$(uname -s)" = "Darwin" ]; then
     echo "Restoring defaults..."
