@@ -1,7 +1,7 @@
 cask_args appdir: "/Applications"
 
 # Taps
-tap "homebrew/bundle"
+tap "homebrew/brew"
 tap "derailed/k9s"
 tap "warrensbox/tap"
 
@@ -19,10 +19,13 @@ brew "python"
 brew "tmux"
 brew "terragrunt"
 brew "warrensbox/tap/tfswitch"
+brew "zplug"
 brew "zsh"
 
 # Apps
+cask "bitwarden"
 cask "docker"
 cask "iterm2"
+cask "logi-options+"
 cask "scroll-reverser"
 cask "visual-studio-code"
