@@ -72,6 +72,7 @@ cd $HOME/dotfiles && chmod u+x install.sh
 5. Type in your password
 6. Decide what you want to install
 7. If you want to create an SSH key you can run the `ssh.sh` file (or run it multiple times for multiple keys)
+8. If you want to beautify your iterm2 installation, follow [this guide on Medium](https://formulae.brew.sh/formula/zplug).
 
 ## Sources
 
