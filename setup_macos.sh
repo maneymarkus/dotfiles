@@ -39,7 +39,7 @@ brew update
 echo "brew is up-to-date."
 
 # install programs from Brewfile
-brew tap homebrew/bundle
+brew tap homebrew/brew
 brew bundle --file ./Brewfile
 
 # install terraform (if no local installation exists) and mitigate permission issues
