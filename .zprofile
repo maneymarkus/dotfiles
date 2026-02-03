@@ -4,6 +4,9 @@
 # add `~/bin` to $PATH
 export PATH="$HOME/bin:$PATH"
 
+# add mysql (v8.4) to path
+export PATH="/opt/homebrew/opt/mysql/bin:$PATH"
+
 # brew
 if [ "$(uname -s)" = "Darwin" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -123,3 +126,8 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
+
+source /Users/markus.staedler/dotfiles/shell/alias.sh
+source /Users/markus.staedler/dotfiles/shell/env.sh
+
+export SHELLUSERNAME=mstaedler
