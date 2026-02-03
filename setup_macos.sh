@@ -42,10 +42,14 @@ echo "brew is up-to-date."
 brew tap homebrew/brew
 brew bundle --file ./Brewfile
 
+echo "Installed programs from Brewfile."
+
 # install terraform (if no local installation exists) and mitigate permission issues
 if ! [ -x "$(command -v terraform)" ]; then
     mkdir -p $HOME/bin
     tfswitch -b $HOME/bin/terraform
 fi
 
-echo "Installed programs from Brewfile."
+echo "Installed terraform."
+
+echo "Please install Rancher Desktop manually via this link: https://rancherdesktop.io/"

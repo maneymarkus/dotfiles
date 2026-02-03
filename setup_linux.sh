@@ -28,7 +28,7 @@ fi
 sudo "$pkg_manager" -y install git-all
 
 # install packages
-sudo "$pkg_manager" install -y python3 tmux gnupg coreutils zsh git-lfs jq curl # install curl as a precaution (because might not be installed e.g. on Ubuntu and wget was used to download dotfiles)
+sudo "$pkg_manager" install -y python3 tmux gnupg coreutils zsh git-lfs jq curl just # install curl as a precaution (because might not be installed e.g. on Ubuntu and wget was used to download dotfiles)
 
 # install awscli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$HOME/awscliv2.zip"
@@ -54,7 +54,7 @@ if [ "$pkg_manager" = "apt-get" ]; then
     sudo apt install -y code
 fi
 
-# install docker
+# install docker; might be replaced with Rancher Desktop later
 if [ "$pkg_manager" = "apt-get" ]; then
     # Add Docker's official GPG key:
     sudo apt-get update
@@ -97,4 +97,3 @@ fi
 echo "Please install terragrunt manually via this link: https://terragrunt.gruntwork.io/docs/getting-started/install/"
 # Just ask for input to pause script execution
 read -p "Did you install terragrunt? (Y/n):" resp
-
