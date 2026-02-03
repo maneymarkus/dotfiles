@@ -23,7 +23,8 @@
 	cm = commit -m
 	cam = commit -am
 	df = diff
-	st = status
+	lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar %G?)%Creset'
+	st = status -s
 	s = switch
 [color "status"]
 	header = "black normal bold"
@@ -34,3 +35,8 @@
 	branch = "magenta normal bold"
 	nobranch = "normal normal bold"
 	unmerged = "red normal bold"
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
