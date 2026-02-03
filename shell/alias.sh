@@ -1,5 +1,6 @@
 #!/bin/sh
-alias l="ls -la"
+alias l="ls -lh"
+alias ll="ls -lah"
 alias please="sudo"
 
 #####################################
