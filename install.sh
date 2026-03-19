@@ -78,6 +78,13 @@ for file in $HOME/dotfiles/dotfiles/.*; do
 done;
 unset file;
 
+# set up git pre-push hook via symlink into ~/.git-templates/hooks
+echo "Setting up git pre-push hook..."
+mkdir -p "$HOME/.git-templates/hooks"
+chmod +x "$HOME/dotfiles/git/hooks/pre-push"
+ln -sf "$HOME/dotfiles/git/hooks/pre-push" "$HOME/.git-templates/hooks/pre-push"
+echo "Git pre-push hook installed at ~/.git-templates/hooks/pre-push"
+
 # restart shell
 source .zshrc
 # .zprofile doesn't have to be sourced here again as .zshrc already contains this line

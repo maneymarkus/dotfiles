@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Pre-push hook: prevents direct pushes to main or master branches.
+
+protected_branches=("main" "master")
+current_branch=$(git symbolic-ref --short HEAD | tr '[:upper:]' '[:lower:]')
+# get the argument list of the parent command that invoked the pre-push hook (e.g., "git push origin main"). 
+# This is necessary to check if the user is trying to force push, which should be allowed even to protected branches.
+parent_cmd=$(ps -p $PPID -o args=)
+
+for protected_branch in "${protected_branches[@]}"; do
+    if [[ "$current_branch" = "$protected_branch" ]]; then
+        # Allow force push if --force or -f is used
+        if [[ "$parent_cmd" == *" --force"* || "$parent_cmd" == *" -f"* ]]; then
+            exit 0
+        fi
+        echo "ERROR: Direct push to '$current_branch' is not allowed."
+        echo "       Create a feature branch and open a pull request instead."
+        exit 1
+    fi
+done
+
+exit 0

@@ -9,6 +9,7 @@
 [core]
 	editor = code --wait --new-window
 	excludesfile = ~/.gitignore_global
+	hooksPath = ~/.git-templates/hooks
 [diff]
 	tool = default-difftool
 [difftool "default-difftool"]
