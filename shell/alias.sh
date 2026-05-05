@@ -17,3 +17,9 @@ alias gp="git push"
 #####################################
 alias python="python3"
 alias py="python"
+
+#####################################
+# Kubernetes
+#####################################
+alias k="kubectl"
+alias kswitch="kubectl config use-context"
