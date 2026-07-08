@@ -15,7 +15,6 @@ brew "git-lfs"
 brew "gnupg"
 brew "jq"
 brew "just"
-brew "mackup"
 brew "nvm" # to install npm and node later on
 brew "python"
 # install Rancher desktop automatically?
