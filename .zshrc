@@ -23,6 +23,16 @@ if ! zplug check --verbose; then
     fi
 fi
 
+# ZLE key bindings
+# opt+backspace: delete back to previous word boundary including special chars (e.g. hyphens)
+export WORDCHARS=''
+# up/down arrow: search history by the prefix already typed
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
 source "$DOTFILES_DIR/shell/alias.sh"
 source "$DOTFILES_DIR/shell/env.sh"
 
