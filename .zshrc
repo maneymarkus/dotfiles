@@ -1,11 +1,5 @@
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 
-# Path to oh-my-zsh installation
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME=""
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
-
 # zplug
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh

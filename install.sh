@@ -38,15 +38,6 @@ fi
 
 echo "zsh is default shell."
 
-# check if oh-my-zsh is available
-if ! [ -x "$(command -v omz)" ]; then
-    echo "oh-my-zsh is not available. Installing..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    echo "Installed oh-my-zsh."
-fi
-
-echo "oh-my-zsh is available."
-
 # install terragrunt autocomplete (will be added to ~/.zshrc but it's fine) if terragrunt is available
 if [ -x "$(command -v terragrunt)" ]; then
     terragrunt --install-autocomplete
