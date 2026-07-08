@@ -1,7 +1,11 @@
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 
 # zplug
-export ZPLUG_HOME=$(brew --prefix)/opt/zplug
+if [ "$(uname -s)" = "Darwin" ]; then
+    export ZPLUG_HOME=$(brew --prefix)/opt/zplug
+else
+    export ZPLUG_HOME="$HOME/.zplug"
+fi
 source $ZPLUG_HOME/init.zsh
 
 zplug "mafredri/zsh-async", from:github
