@@ -1,7 +1,6 @@
 cask_args appdir: "/Applications"
 
 # Taps
-tap "homebrew/brew"
 tap "derailed/k9s"
 tap "warrensbox/tap"
 tap "sheeki03/tap"
