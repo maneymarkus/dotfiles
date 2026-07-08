@@ -28,9 +28,5 @@ source "$DOTFILES_DIR/shell/env.sh"
 
 export SHELLUSERNAME=mstaedler
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/markus.staedler/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
 # krew path
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
