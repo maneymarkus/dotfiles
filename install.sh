@@ -62,11 +62,11 @@ rm -rf $HOME/.zprofile
 ln -s $HOME/dotfiles/.zprofile $HOME/.zprofile
 
 # source shell files
-# add source command to ~/.zprofile
+# add source commands to ~/.zprofile.local (gitignored) to avoid polluting the repo
 DOTFILES_DIR="$HOME/dotfiles"
 for file in "$DOTFILES_DIR/shell/"*; do
     if ask "Do you want to source $(basename "$file")?"; then
-        echo "source \"\$DOTFILES_DIR/shell/$(basename "$file")\"" >> $HOME/.zprofile
+        echo "source \"\$DOTFILES_DIR/shell/$(basename "$file")\"" >> "$HOME/.zprofile.local"
     fi
 done;
 unset file;

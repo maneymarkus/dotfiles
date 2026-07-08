@@ -4,3 +4,4 @@
 .gnupg/*
 .idea
 Brewfile.lock.json
+.zprofile.local

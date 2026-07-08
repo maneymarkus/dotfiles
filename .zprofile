@@ -132,3 +132,6 @@ source "$DOTFILES_DIR/shell/alias.sh"
 source "$DOTFILES_DIR/shell/env.sh"
 
 export SHELLUSERNAME=mstaedler
+
+# Machine-specific overrides (gitignored, appended by install.sh)
+[[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
