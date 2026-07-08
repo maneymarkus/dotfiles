@@ -35,10 +35,12 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$HOME/awscli
 unzip $HOME/awscliv2.zip -d $HOME
 sudo $HOME/aws/install
 
-if [ "$pkg_manager" != "pacman" ]; then
-    sudo "$pkg_manager" -y install pacman
-fi
-sudo pacman -S k9s
+# install k9s from GitHub releases (distro-agnostic)
+K9S_VERSION=$(curl -s https://api.github.com/repos/derailed/k9s/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+curl -L "https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_amd64.tar.gz" -o /tmp/k9s.tar.gz
+tar -xzf /tmp/k9s.tar.gz -C /tmp k9s
+sudo mv /tmp/k9s /usr/local/bin/k9s
+rm /tmp/k9s.tar.gz
 
 # install vscode; only works with apt - for other distros see link:
 # https://code.visualstudio.com/docs/setup/linux
