@@ -127,7 +127,8 @@ if ! zplug check --verbose; then
     fi
 fi
 
-source /Users/markus.staedler/dotfiles/shell/alias.sh
-source /Users/markus.staedler/dotfiles/shell/env.sh
+DOTFILES_DIR="$HOME/dotfiles"
+source "$DOTFILES_DIR/shell/alias.sh"
+source "$DOTFILES_DIR/shell/env.sh"
 
 export SHELLUSERNAME=mstaedler
