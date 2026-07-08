@@ -44,28 +44,44 @@ if [ -x "$(command -v terragrunt)" ]; then
     echo "Installed terragrunt autocomplete."
 fi
 
-# removes .zshrc from $HOME and symlinks the .zshrc file from dotfiles
-rm -rf $HOME/.zshrc
-ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+DOTFILES_DIR="$HOME/dotfiles"
 
-# removes .zprofile from $HOME and symlinks the .zprofile file from dotfiles
-rm -rf $HOME/.zprofile
-ln -s $HOME/dotfiles/.zprofile $HOME/.zprofile
+# symlink a file from the dotfiles repo into $HOME, idempotently
+symlink () {
+    local src="$1" dst="$2"
+    if [ "$(readlink "$dst")" = "$src" ]; then
+        echo "Already symlinked: $dst"
+    else
+        # Remove only if it's a regular file or a wrong symlink, never silently delete a directory
+        if [ -f "$dst" ] || [ -L "$dst" ]; then
+            rm "$dst"
+        fi
+        ln -s "$src" "$dst"
+        echo "Symlinked: $dst -> $src"
+    fi
+}
+
+symlink "$DOTFILES_DIR/.zshrc"   "$HOME/.zshrc"
+symlink "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
 
 # source shell files
 # add source commands to ~/.zprofile.local (gitignored) to avoid polluting the repo
-DOTFILES_DIR="$HOME/dotfiles"
 for file in "$DOTFILES_DIR/shell/"*; do
+    line="source \"\$DOTFILES_DIR/shell/$(basename "$file")\""
     if ask "Do you want to source $(basename "$file")?"; then
-        echo "source \"\$DOTFILES_DIR/shell/$(basename "$file")\"" >> "$HOME/.zprofile.local"
+        if ! grep -qF "$line" "$HOME/.zprofile.local" 2>/dev/null; then
+            echo "$line" >> "$HOME/.zprofile.local"
+        else
+            echo "Already sourced: $(basename "$file")"
+        fi
     fi
 done;
 unset file;
 
 # install dotfiles via symbolic link
-for file in $HOME/dotfiles/dotfiles/.*; do
+for file in "$DOTFILES_DIR/dotfiles/".*; do
     if test -f "$file" && ask "Do you want to install $(basename "$file")?"; then
-        ln -s $file "$HOME/$(basename "$file")";
+        symlink "$file" "$HOME/$(basename "$file")"
     fi
 done;
 unset file;
