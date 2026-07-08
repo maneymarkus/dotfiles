@@ -13,7 +13,7 @@ usage () {
 }
 
 # handle flags
-while getopts "h:" flag; do
+while getopts "h" flag; do
     case $flag in
         h)
         usage
