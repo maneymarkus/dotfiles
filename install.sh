@@ -48,7 +48,7 @@ fi
 echo "oh-my-zsh is available."
 
 # install terragrunt autocomplete (will be added to ~/.zshrc but it's fine) if terragrunt is available
-if ! [ -x "$(command -v terragrunt)" ]; then
+if [ -x "$(command -v terragrunt)" ]; then
     terragrunt --install-autocomplete
     echo "Installed terragrunt autocomplete."
 fi
