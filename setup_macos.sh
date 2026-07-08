@@ -39,7 +39,6 @@ brew update
 echo "brew is up-to-date."
 
 # install programs from Brewfile
-brew tap homebrew/brew
 brew bundle --file ./Brewfile
 
 echo "Installed programs from Brewfile."
