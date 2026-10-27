@@ -94,6 +94,34 @@ The tarball contains no Git history, so the directory is not a Git repository ye
 8. If you want to beautify your iterm2 installation, follow [this guide on Medium](https://formulae.brew.sh/formula/zplug).
 
 
+## Local Testing
+
+The Linux setup can be tested in a throwaway Docker container, e.g. with [Rancher Desktop](https://rancherdesktop.io/) (using the `dockerd` container engine so the `docker` CLI is available). The steps are manual on purpose: cloning needs your SSH key, which should not be baked into an image or script.
+
+1. Start a container, mounting your `~/.ssh` directory read-only to a temporary location:
+
+    ```bash
+    docker run -it --name dotfiles-test -v $HOME/.ssh:/tmp/host-ssh:ro ubuntu:24.04 bash
+    ```
+
+2. Inside the container, install the prerequisites (the minimal image has neither Git, an SSH client nor `sudo`, which `setup_linux.sh` uses):
+
+    ```bash
+    apt-get update && apt-get install -y git openssh-client sudo
+    ```
+
+3. Copy the SSH key in with correct permissions (SSH refuses keys with loose permissions, which the read-only mount usually has) and trust the GitHub host:
+
+    ```bash
+    mkdir -p ~/.ssh && cp /tmp/host-ssh/<key_name> ~/.ssh/ && chmod 700 ~/.ssh && chmod 600 ~/.ssh/<key_name>
+    ssh-keyscan github.mpi-internal.com >> ~/.ssh/known_hosts
+    ```
+
+4. Clone and run the installer as described in [Install](#install) (steps 3 to 7). If the clone cannot reach the host, check that you are on the VPN.
+
+5. Leave the container with `exit`. Re-enter it later with `docker start -ai dotfiles-test`, or throw it away and start fresh with `docker rm dotfiles-test`.
+
+
 ## Sources
 
 ### dotfiles
