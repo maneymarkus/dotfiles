@@ -64,6 +64,10 @@ symlink () {
 symlink "$DOTFILES_DIR/.zshrc"   "$HOME/.zshrc"
 symlink "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
 
+# AWS CLI config: symlink only the config file, never the whole ~/.aws (it holds credential caches)
+mkdir -p "$HOME/.aws"
+symlink "$DOTFILES_DIR/aws/config" "$HOME/.aws/config"
+
 # source shell files
 # add source commands to ~/.zprofile.local (gitignored) to avoid polluting the repo
 for file in "$DOTFILES_DIR/shell/"*; do
@@ -106,4 +110,13 @@ fi
 # if on Linux, give some hints
 if [ "$(uname -s)" = "Linux" ]; then
     echo "Now to enable some of the changes (like changing the default user shell to zsh) please log out and in again"
+fi
+
+# if this directory is not a git repository yet (installed via tarball), explain how to connect it
+if [ ! -e "$DOTFILES_DIR/.git" ]; then
+    echo
+    echo "This dotfiles directory is not a Git repository yet. To be able to update/commit dotfiles from this machine:"
+    echo "  1. Set up an SSH key: either create a new one with './ssh.sh <email> [key_name]' (and add the public key to GitHub),"
+    echo "     or copy an existing key into $HOME/.ssh/ (and make sure it is added to GitHub)."
+    echo "  2. Then run './init-git.sh' to connect this directory to the GitHub repository."
 fi
