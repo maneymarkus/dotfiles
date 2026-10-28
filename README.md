@@ -11,7 +11,7 @@ Update: the `setup_linux.sh` script is now only bash compatible. Should be good 
 ## Structure
 
 - `dotfiles/`: contains actual configuration dotfiles like .gitconfig. Files in this repository will be installed by creating a symlink in the ~ directory linking to the respective file in this directory
-- `shell/`: contains shell files that are installed by sourcing them 
+- `shell/`: contains shell files that are sourced by `.zshrc` (`alias.sh`, `env.sh`)
 
 
 ## Install

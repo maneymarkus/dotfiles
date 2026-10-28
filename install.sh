@@ -14,10 +14,12 @@ ask () {
     test "$resp" = "y"
 }
 
+DOTFILES_DIR="$HOME/dotfiles"
+
 if [ "$(uname -s)" = "Linux" ]; then
-    bash setup_linux.sh
+    bash "$DOTFILES_DIR/setup_linux.sh"
 elif [ "$(uname -s)" = "Darwin" ]; then
-    sh setup_macos.sh
+    bash "$DOTFILES_DIR/setup_macos.sh"
     if [ $? -ne 0 ]; then
         echo "MacOS Setup failed. Abort."
         exit 1
@@ -44,8 +46,6 @@ if [ -x "$(command -v terragrunt)" ]; then
     echo "Installed terragrunt autocomplete."
 fi
 
-DOTFILES_DIR="$HOME/dotfiles"
-
 # symlink a file from the dotfiles repo into $HOME, idempotently
 symlink () {
     local src="$1" dst="$2"
@@ -64,24 +64,6 @@ symlink () {
 symlink "$DOTFILES_DIR/.zshrc"   "$HOME/.zshrc"
 symlink "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
 
-# AWS CLI config: symlink only the config file, never the whole ~/.aws (it holds credential caches)
-mkdir -p "$HOME/.aws"
-symlink "$DOTFILES_DIR/aws/config" "$HOME/.aws/config"
-
-# source shell files
-# add source commands to ~/.zprofile.local (gitignored) to avoid polluting the repo
-for file in "$DOTFILES_DIR/shell/"*; do
-    line="source \"\$DOTFILES_DIR/shell/$(basename "$file")\""
-    if ask "Do you want to source $(basename "$file")?"; then
-        if ! grep -qF "$line" "$HOME/.zprofile.local" 2>/dev/null; then
-            echo "$line" >> "$HOME/.zprofile.local"
-        else
-            echo "Already sourced: $(basename "$file")"
-        fi
-    fi
-done;
-unset file;
-
 # install dotfiles via symbolic link
 for file in "$DOTFILES_DIR/dotfiles/".*; do
     if test -f "$file" && ask "Do you want to install $(basename "$file")?"; then
@@ -97,14 +79,13 @@ chmod +x "$HOME/dotfiles/git/hooks/pre-push"
 ln -sf "$HOME/dotfiles/git/hooks/pre-push" "$HOME/.git-templates/hooks/pre-push"
 echo "Git pre-push hook installed at ~/.git-templates/hooks/pre-push"
 
-# restart shell
-source .zshrc
-
 # if on MacOS restore defaults
 if [ "$(uname -s)" = "Darwin" ]; then
     echo "Restoring defaults..."
 
     source $HOME/dotfiles/.macos
+
+    echo "Done. Open a new terminal window to load the new shell configuration."
 fi
 
 # if on Linux, give some hints

@@ -35,8 +35,3 @@ bindkey "^[[B" down-line-or-beginning-search
 
 source "$DOTFILES_DIR/shell/alias.sh"
 source "$DOTFILES_DIR/shell/env.sh"
-
-export SHELLUSERNAME=mstaedler
-
-# krew path
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

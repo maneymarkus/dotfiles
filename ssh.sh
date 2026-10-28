@@ -52,17 +52,29 @@ apple_use_keychain=""
 if [ "$(uname -s)" = "Darwin" ]; then
     # If you're experiencing problems, check this guide: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#adding-your-ssh-key-to-the-ssh-agent
     # (and make sure it shows the guide for Mac)
+    mkdir -p ~/.ssh
     touch ~/.ssh/config
-    echo "Host *\n  AddKeysToAgent yes\n" | tee ~/.ssh/config
+    chmod 600 ~/.ssh/config
 
     read -p "Did you set a passphrase for your key? (Y/n):" resp
-    if [ -z "$resp" ]; then
-        echo "  UseKeychain yes\n" >> ~/.ssh/config
+    use_keychain=0
+    if [ -z "$resp" ] || [ "$(echo "$resp" | tr '[:upper:]' '[:lower:]')" = "y" ]; then
+        use_keychain=1
         apple_use_keychain="--apple-use-keychain "
     fi
 
-    echo "  IdentityFile ~/.ssh/$key_name" >> ~/.ssh/config
-
+    # append a block for this key, never touch existing entries
+    if grep -qF "IdentityFile ~/.ssh/$key_name" ~/.ssh/config; then
+        echo "~/.ssh/config already references $key_name, leaving it unchanged."
+    else
+        {
+            printf '\nHost *\n'
+            printf '  AddKeysToAgent yes\n'
+            [ "$use_keychain" -eq 1 ] && printf '  UseKeychain yes\n'
+            printf '  IdentityFile ~/.ssh/%s\n' "$key_name"
+        } >> ~/.ssh/config
+        echo "Added $key_name to ~/.ssh/config."
+    fi
 fi
 
 ssh-add $apple_use_keychain ~/.ssh/$key_name

@@ -39,7 +39,7 @@ brew update
 echo "brew is up-to-date."
 
 # install programs from Brewfile
-brew bundle --file ./Brewfile
+brew bundle --file "${DOTFILES_DIR:-$HOME/dotfiles}/Brewfile"
 
 echo "Installed programs from Brewfile."
 
